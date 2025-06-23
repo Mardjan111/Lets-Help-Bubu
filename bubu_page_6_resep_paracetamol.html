@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Susun Resep Paracetamol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFE5D9;
+      --mint: #D5F3E5;
+      --blue: #BEE3F8;
+      --gray: #6B7280;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background-color: var(--peach);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff6b6b;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .drag-area {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      min-height: 250px;
+      background-color: var(--mint);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .drag-item {
+      background-color: var(--blue);
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: grab;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    .drop-zone {
+      border: 2px dashed #90cdf4;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e0f7fa;
+      min-height: 50px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Susun Resep Puyer Paracetamol 🌡️</h2>
+    <p>Drag komponen di bawah ini ke dalam urutan yang benar:</p>
+
+    <div id="dragContainer" class="drag-area" ondragover="event.preventDefault()"></div>
+    <div id="dropContainer" class="drag-area">
+      <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <button class="btn" onclick="checkOrder()">Cek Resep ✅</button>
+  </div>
+
+  <script>
+    const komponenBenar = [
+      "R/ Paracetamol pulv. 200 mg",
+      "Sacch. lactis q.s.",
+      "mf. pulv. dtd. No X",
+      "S 4 dd pulv 1 pc. prn (febris)"
+    ];
+
+    const dragContainer = document.getElementById("dragContainer");
+    const komponenAcak = [...komponenBenar].sort(() => Math.random() - 0.5);
+
+    komponenAcak.forEach((item, index) => {
+      const el = document.createElement("div");
+      el.className = "drag-item";
+      el.textContent = item;
+      el.draggable = true;
+      el.id = `drag-${index}`;
+      el.ondragstart = (e) => {
+        e.dataTransfer.setData("text", e.target.id);
+      };
+      dragContainer.appendChild(el);
+    });
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("text");
+      const draggedElement = document.getElementById(data);
+      if (!ev.target.hasChildNodes()) {
+        ev.target.appendChild(draggedElement);
+      }
+    }
+
+    function checkOrder() {
+      const zones = document.querySelectorAll(".drop-zone");
+      const userAnswer = [];
+      zones.forEach(zone => {
+        if (zone.hasChildNodes()) {
+          userAnswer.push(zone.firstChild.textContent.trim());
+        }
+      });
+
+      if (userAnswer.length < 4) {
+        alert("Yuk lengkapi semua bagian resep dulu!");
+        return;
+      }
+
+      const benar = userAnswer.every((val, i) => val === komponenBenar[i]);
+      if (benar) {
+        alert("Kamu hebat! Resep paracetamolnya lengkap! 🎉");
+        window.location.href = "page7.html";
+      } else {
+        alert("Belum pas nih, coba disusun ulang ya!");
+      }
+    }
+  </script>
+</body>
+</html>

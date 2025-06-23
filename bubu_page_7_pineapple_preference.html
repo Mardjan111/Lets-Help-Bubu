@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rasa Favorit Bubu 🍍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFE5D9;
+      --blue: #BEE3F8;
+      --white: #ffffff;
+      --black: #000000;
+      --gray: #6B7280;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background-color: var(--peach);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: #ff6b6b;
+    }
+
+    p {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    .choices label {
+      display: block;
+      background-color: var(--blue);
+      padding: 15px;
+      border-radius: 15px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .choices label:hover {
+      background-color: #90cdf4;
+    }
+
+    input[type="radio"] {
+      transform: scale(1.2);
+      margin-right: 12px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>What If... Bubu Loves Pineapple? 🍍</h2>
+    <p>Bubu hanya mau minum obat rasa nanas. Sayangnya, rasa nanas sedang tidak tersedia di apotek.
+      Apa yang sebaiknya kamu lakukan sebagai dokter?</p>
+
+    <div class="choices">
+      <label><input type="radio" name="jawaban" value="paksa" /> A. Paksa Bubu minum rasa lain</label>
+      <label><input type="radio" name="jawaban" value="negosiasi" /> B. Diskusi dengan ibu & berikan alternatif rasa yang tersedia ✅</label>
+      <label><input type="radio" name="jawaban" value="tunda" /> C. Tunda pemberian obat sampai rasa nanas tersedia</label>
+    </div>
+
+    <button class="btn" onclick="checkAnswer()">Lanjutkan ➡️</button>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const pilihan = document.querySelector('input[name="jawaban"]:checked');
+      if (!pilihan) {
+        alert("Pilih jawaban dulu ya!");
+        return;
+      }
+      if (pilihan.value === "negosiasi") {
+        alert("Tepat! Komunikasi dengan orang tua penting dalam peresepan anak. 👩‍👧");
+        window.location.href = "page8.html";
+      } else {
+        alert("Yuk pertimbangkan komunikasi dengan orang tua agar anak tetap bisa minum obat tanpa paksaan.");
+      }
+    }
+  </script>
+</body>
+</html>

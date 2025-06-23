@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilih Diagnosis Banding - Bubu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFE5D9;
+      --mint: #D5F3E5;
+      --blue: #BEE3F8;
+      --gray: #6B7280;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background-color: var(--peach);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff6b6b;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    p {
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    label {
+      background-color: var(--mint);
+      padding: 12px 20px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    label:hover {
+      background-color: var(--blue);
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.3);
+    }
+
+    .btn {
+      margin-top: 30px;
+      align-self: center;
+      padding: 12px 30px;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #90cdf4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pilih Diagnosis Banding 🔍</h2>
+    <p>Pilih <strong>maksimal 4</strong> kemungkinan diagnosis dari daftar di bawah ini:</p>
+
+    <form id="ddForm">
+      <label><input type="checkbox" name="dd" value="Typhoid Fever" /> Typhoid Fever</label>
+      <label><input type="checkbox" name="dd" value="Acute Gastroenteritis" /> Acute Gastroenteritis</label>
+      <label><input type="checkbox" name="dd" value="UTI" /> Urinary Tract Infection (UTI)</label>
+      <label><input type="checkbox" name="dd" value="Dengue" /> Dengue Fever</label>
+      <label><input type="checkbox" name="dd" value="Hepatitis A" /> Hepatitis A</label>
+      <label><input type="checkbox" name="dd" value="Appendicitis" /> Acute Appendicitis</label>
+      <label><input type="checkbox" name="dd" value="Influenza" /> Influenza</label>
+      <label><input type="checkbox" name="dd" value="Otitis Media" /> Otitis Media</label>
+      <label><input type="checkbox" name="dd" value="Tuberculosis" /> Tuberculosis</label>
+      <label><input type="checkbox" name="dd" value="Food Poisoning" /> Food Poisoning</label>
+
+      <button type="button" class="btn" onclick="submitForm()">Lanjutkan ➡️</button>
+    </form>
+  </div>
+
+  <script>
+    function submitForm() {
+      const checkboxes = document.querySelectorAll('input[name="dd"]:checked');
+      if (checkboxes.length > 4) {
+        alert("Kamu hanya boleh memilih maksimal 4 diagnosis banding!");
+        return;
+      }
+      window.location.href = "page3.html";
+    }
+  </script>
+</body>
+</html>

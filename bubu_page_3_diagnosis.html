@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnosis Kerja Bubu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFE5D9;
+      --blue: #BEE3F8;
+      --gray: #6B7280;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background-color: var(--peach);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff6b6b;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .lab-box {
+      background-color: #f1f5f9;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 25px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    td, th {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .question {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .answers {
+      margin-top: 15px;
+    }
+
+    .answers label {
+      display: block;
+      background-color: var(--blue);
+      padding: 12px 20px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .answers label:hover {
+      background-color: #90cdf4;
+    }
+
+    .btn {
+      margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 12px 30px;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #63b3ed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Yuk Tentukan Diagnosis Kerja! 🧠</h2>
+
+    <div class="lab-box">
+      <p><strong>Hasil Pemeriksaan Penunjang:</strong></p>
+      <table>
+        <tr><td>Suhu tubuh</td><td>39,2 °C</td></tr>
+        <tr><td>Nadi</td><td>102 x/menit</td></tr>
+        <tr><td>Lidah</td><td>Kotor, putih di tengah</td></tr>
+        <tr><td>Abdomen</td><td>Nyeri tekan kuadran kanan atas</td></tr>
+        <tr><td>Feses</td><td>Cair, tanpa darah</td></tr>
+        <tr><td>Widal Test</td><td>O: 1/320, H: 1/160</td></tr>
+        <tr><td>LED</td><td>35 mm/jam</td></tr>
+        <tr><td>Leukosit</td><td>8.500/μL</td></tr>
+      </table>
+    </div>
+
+    <div class="question">
+      Berdasarkan hasil di atas, apakah diagnosis kerjamu?
+    </div>
+    <div class="answers">
+      <label><input type="radio" name="dx" value="Typhoid Fever" /> Typhoid Fever</label>
+      <label><input type="radio" name="dx" value="Acute Gastroenteritis" /> Acute Gastroenteritis</label>
+      <label><input type="radio" name="dx" value="Appendicitis" /> Acute Appendicitis</label>
+      <label><input type="radio" name="dx" value="Dengue" /> Dengue Fever</label>
+    </div>
+
+    <button class="btn" onclick="nextPage()">Lanjut ke Obat 💊</button>
+  </div>
+
+  <script>
+    function nextPage() {
+      const answer = document.querySelector('input[name="dx"]:checked');
+      if (!answer) {
+        alert("Pilih salah satu diagnosis dulu ya!");
+        return;
+      }
+      window.location.href = "page4.html";
+    }
+  </script>
+</body>
+</html>

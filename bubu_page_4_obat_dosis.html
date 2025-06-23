@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilih Obat & Dosis - Bubu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #FFE5D9;
+      --mint: #D5F3E5;
+      --blue: #BEE3F8;
+      --gray: #6B7280;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background-color: var(--peach);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff6b6b;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--black);
+    }
+
+    .options label {
+      display: block;
+      background-color: var(--mint);
+      padding: 12px 20px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options label:hover {
+      background-color: var(--blue);
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      transform: scale(1.2);
+      margin-right: 10px;
+    }
+
+    .btn {
+      margin-top: 40px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 12px 30px;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #90cdf4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pilih Obat & Dosis untuk Bubu 💊</h2>
+
+    <div class="section">
+      <h3>Obat apa yang paling sesuai untuk kasus Bubu?</h3>
+      <div class="options">
+        <label><input type="checkbox" name="obat" value="Chloramphenicol" /> Chloramphenicol</label>
+        <label><input type="checkbox" name="obat" value="Paracetamol" /> Paracetamol</label>
+        <label><input type="checkbox" name="obat" value="Oseltamivir" /> Oseltamivir</label>
+        <label><input type="checkbox" name="obat" value="Amoxicillin" /> Amoxicillin</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Berapa dosis yang tepat untuk masing-masing obat?</h3>
+      <div class="options">
+        <label><input type="radio" name="dosis_chlor" value="300 mg 4x sehari" /> Chloramphenicol: 300 mg 4× sehari</label>
+        <label><input type="radio" name="dosis_chlor" value="100 mg 3x sehari" /> Chloramphenicol: 100 mg 3× sehari</label>
+        <label><input type="radio" name="dosis_paracet" value="200 mg tiap 6 jam" /> Paracetamol: 200 mg tiap 6 jam</label>
+        <label><input type="radio" name="dosis_paracet" value="400 mg tiap 12 jam" /> Paracetamol: 400 mg tiap 12 jam</label>
+      </div>
+    </div>
+
+    <button class="btn" onclick="validate()">Lanjut ke Resep 📝</button>
+  </div>
+
+  <script>
+    function validate() {
+      const obatDipilih = document.querySelectorAll('input[name="obat"]:checked').length;
+      const dosisChlor = document.querySelector('input[name="dosis_chlor"]:checked');
+      const dosisParacet = document.querySelector('input[name="dosis_paracet"]:checked');
+
+      if (obatDipilih === 0 || !dosisChlor || !dosisParacet) {
+        alert("Pilih obat dan dosisnya dulu, ya!");
+        return;
+      }
+
+      window.location.href = "page5.html";
+    }
+  </script>
+</body>
+</html>
